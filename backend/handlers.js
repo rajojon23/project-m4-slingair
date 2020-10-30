@@ -12,6 +12,7 @@ const getFlights = (req, res) => {
 
   res.status(200).json({
     "status": "success",
+    "message": "flight list requested",
     "data": flights
   });
 
@@ -27,6 +28,7 @@ const getFlight = (req, res) => {
 
   res.status(200).json({
     "status": "success",
+    "message": "flight requested",
     "data": seats
   });
 
@@ -55,7 +57,7 @@ const getReservations = (req, res) => {
 
   res.status(200).json({
     "status": 201,
-    "message": "reservation list queried",
+    "message": "reservation list requested",
     "reservations": reservations
   });
  
@@ -70,7 +72,7 @@ const getSingleReservation = (req, res) => {
 
   res.status(200).json({
     "status": 201,
-    "message": "reservation queried",
+    "message": "reservation requested",
     "reservation": result
   });
   

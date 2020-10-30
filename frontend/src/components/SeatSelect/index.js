@@ -70,8 +70,8 @@ const SeatSelect = ({ updateUserReservation }) => {
 
             formData.id = json.reservationID;
             
-            updateReservation(formData);
-            history.push('/confirmed');
+            updateReservation(formData);//notify App component of state change so rerender is needed
+            history.push('/confirmed');//using the already created history const to go to '/confirmed' 
             
 
           } else if (error) {
@@ -84,7 +84,7 @@ const SeatSelect = ({ updateUserReservation }) => {
       // TODO: if error from server, show error to user (stretch goal)
     }
     else{
-      console.log("email is wrong");
+      // else, email is wrong, lol
     }
   };
 
