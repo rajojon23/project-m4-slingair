@@ -13,7 +13,13 @@ const Form = ({
   handleSeatSelect,
   handleSubmit,
   subStatus,
-}) => (
+}
+
+) => {
+
+
+  
+  return(
   <Wrapper>
     <Plane
       selectedSeat={formData.seat}
@@ -50,6 +56,8 @@ const Form = ({
     </UserForm>
   </Wrapper>
 );
+
+};
 
 const Wrapper = styled.form`
   display: flex;

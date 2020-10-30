@@ -12,6 +12,8 @@ const SeatSelect = ({ updateUserReservation }) => {
   const [disabled, setDisabled] = useState(true);
   const [subStatus, setSubStatus] = useState("idle");
 
+  let updateReservation = updateUserReservation;
+
   useEffect(() => {
     // This hook is listening to state changes and verifying whether or not all
     // of the form data is filled out.
@@ -20,7 +22,7 @@ const SeatSelect = ({ updateUserReservation }) => {
       : setDisabled(false);
   }, [flightNumber, formData, setDisabled]);
 
-  const handleFlightSelect = (ev) => {
+  const handleFlightSelect = (ev) => {//this is used in the FlightSelect.js component 
     setFlightNumber(ev.target.value);
   };
 
@@ -30,6 +32,7 @@ const SeatSelect = ({ updateUserReservation }) => {
 
   const handleChange = (val, item) => {
     setFormData({ ...formData, [item]: val });
+
   };
 
   const validateEmail = () => {
@@ -42,12 +45,46 @@ const SeatSelect = ({ updateUserReservation }) => {
   };
 
   const handleSubmit = (ev) => {
+    console.log("submit called");
     ev.preventDefault();
+
+    formData.flight = flightNumber; 
     if (validateEmail()) {
       // TODO: Send data to the server for validation/submission
+      fetch("/reservation", {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          const { status, error } = json;
+  
+          console.log("received message", json);
+          if (status === 201) {
+            setSubStatus("confirmed");
+            localStorage.setItem('reservationID', json.reservationID);
+
+            formData.id = json.reservationID;
+            
+            updateReservation(formData);
+            history.push('/confirmed');
+            
+
+          } else if (error) {
+            setSubStatus("error");
+          }
+        });
+
       // TODO: if 201, add reservation id (received from server) to localStorage
       // TODO: if 201, redirect to /confirmed (push)
       // TODO: if error from server, show error to user (stretch goal)
+    }
+    else{
+      console.log("email is wrong");
     }
   };
 
