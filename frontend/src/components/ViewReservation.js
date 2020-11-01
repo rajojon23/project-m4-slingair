@@ -51,9 +51,6 @@ const ViewReservation = (reservation) => {
                     <BarcodeImg  src={barcodeImg} />
                     <BarcodeImg  src={barcodeImg} />
                     <BarcodeImg  src={barcodeImg} />
-                    <BarcodeImg  src={barcodeImg} />
-                    <BarcodeImg  src={barcodeImg} />
-                    <BarcodeImg  src={barcodeImg} />
                 </div>
 
                 <div>79cd3748-023a-458f-873e-8eb4c0aac3f2</div>
@@ -93,6 +90,11 @@ const Top = styled.div`
     color: #fff;
     flex: 0.2;
     border-radius: 7px 7px 0 0;
+
+
+    span{
+        font-weight: bold;
+    }
   
 `;
 
