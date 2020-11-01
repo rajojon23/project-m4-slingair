@@ -22,7 +22,9 @@ const Header = (reservation) => {
       <h1>Sling Airlines</h1>
     </Logo>
     <Nav>
-      {/* TODO: only show links if the user has a reservation already */}
+      {/* TODO: only show links if the user has a reservation already 
+        Will only show the links if there is a reservation (currReservation is not an empty object)
+      */}
       
       {!(Object.keys(currReservation).length === 0 && currReservation.constructor === Object) &&
               

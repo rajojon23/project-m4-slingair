@@ -8,7 +8,7 @@ const { flights, reservations } = require("./data");
 
 const getFlights = (req, res) => {
 
-
+  
 
   res.status(200).json({
     "status": "success",

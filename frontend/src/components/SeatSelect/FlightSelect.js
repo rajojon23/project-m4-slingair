@@ -25,7 +25,7 @@ const FlightSelect = ({ handleFlightSelect }) => {
       <FlightListSelect defaultValue="Choose your flight" onChange={handleFlightSelect}>
       
           {flights.map((flight) => (
-              <FlightOption>{flight}</FlightOption>
+              <FlightOption key={flight}>{flight}</FlightOption>
           ))}
           <FlightOption disabled >Choose your flight</FlightOption>
 
