@@ -19,8 +19,8 @@ const App = () => {
     // TODO: check localStorage for an id
     // if yes, get data from server and add it to state
 
-    if(localStorage.getItem('reservationID')){
-      //console.log("localstorage exists", localStorage.getItem('reservationID'));
+    if(localStorage.getItem('reservationID')){//if localstorage exists
+     
       let localID = localStorage.getItem('reservationID');
 
       fetch(`/reservations/${localID}`)

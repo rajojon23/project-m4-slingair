@@ -44,8 +44,8 @@ const SeatSelect = ({ updateUserReservation }) => {
     );
   };
 
-  const handleSubmit = (ev) => {
-    console.log("submit called");
+  const handleSubmit = (ev) => {//submit has been called
+
     ev.preventDefault();
 
     formData.flight = flightNumber; 
@@ -66,11 +66,13 @@ const SeatSelect = ({ updateUserReservation }) => {
           console.log("received message", json);
           if (status === 201) {
             setSubStatus("confirmed");
+            // TODO: if 201, add reservation id (received from server) to localStorage
             localStorage.setItem('reservationID', json.reservationID);
 
             formData.id = json.reservationID;
             
             updateReservation(formData);//notify App component of state change so rerender is needed
+            // TODO: if 201, redirect to /confirmed (push)
             history.push('/confirmed');//using the already created history const to go to '/confirmed' 
             
 
@@ -79,8 +81,8 @@ const SeatSelect = ({ updateUserReservation }) => {
           }
         });
 
-      // TODO: if 201, add reservation id (received from server) to localStorage
-      // TODO: if 201, redirect to /confirmed (push)
+      
+      
       // TODO: if error from server, show error to user (stretch goal)
     }
     else{

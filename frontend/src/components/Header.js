@@ -10,13 +10,6 @@ const Header = (reservation) => {
 
   
 
-
-  if(Object.keys(currReservation).length === 0 && currReservation.constructor === Object){
-    console.log("reservation does not exist", currReservation);
-  }
-  else{
-    console.log("reservation exists", currReservation);
-  }
   return <Wrapper>
     <Logo>
       <h1>Sling Airlines</h1>
